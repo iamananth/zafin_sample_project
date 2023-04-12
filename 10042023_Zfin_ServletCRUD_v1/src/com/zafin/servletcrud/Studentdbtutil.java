@@ -64,6 +64,18 @@ public class Studentdbtutil {
 	}
 
 	public static void addStudents(Student student) throws Exception {
+		Connection myConn = null;
+		Statement myStmt = null;
+		ResultSet myRs = null;
+		myConn = datasource.getConnection();
+		PreparedStatement pgStmt = myConn
+				.prepareStatement("Insert into student(first_name,last_name,email)values(?,?,?)");
+		pgStmt.setString(1, student.getFirstName());
+		pgStmt.setString(2, student.getLastName());
+		pgStmt.setString(3, student.getEmail());
+
+		pgStmt.executeUpdate();
+		close(myConn, myStmt, myRs);
 		
 	}
 

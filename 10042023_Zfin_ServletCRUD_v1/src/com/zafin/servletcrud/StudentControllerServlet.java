@@ -142,7 +142,16 @@ public class StudentControllerServlet extends HttpServlet {
 
 	private void addStudents(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-
+		String fname = request.getParameter("fname");
+		String lname = request.getParameter("lname");
+		String email = request.getParameter("email");
+		Student student = new Student(fname, lname, email);
+		try {
+			Studentdbtutil.addStudents(student);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		
 		
 		}
 	}
