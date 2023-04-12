@@ -98,7 +98,19 @@ public class Studentdbtutil {
 	}
 
 	public static void update(String sID, String fName, String lName, String eMail) throws SQLException {
-		
+		// TODO Auto-generated method stub
+		int id=Integer.parseInt((String) sID);
+		//System.out.println(id);
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		myConn = datasource.getConnection();
+		PreparedStatement pgStmt = myConn
+				.prepareStatement("UPDATE student SET first_name = ?, last_name =?,email=? WHERE id=?");
+		pgStmt.setString(1,fName);
+		pgStmt.setString(2,lName);
+		pgStmt.setString(3,eMail);
+		pgStmt.setInt(4,id);
+		pgStmt.executeUpdate();
 		
 	}
 

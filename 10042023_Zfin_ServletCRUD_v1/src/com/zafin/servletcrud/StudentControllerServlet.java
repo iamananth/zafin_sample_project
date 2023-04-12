@@ -82,6 +82,15 @@ public class StudentControllerServlet extends HttpServlet {
 
 	private void UpdateStudents(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
+		String sID = request.getParameter("id");
+		String fName = request.getParameter("fname");
+		String lName = request.getParameter("lname");
+		String eMail = request.getParameter("email");
+		/*
+		 * System.out.println(lName); System.out.println(sID);
+		 */
+		Studentdbtutil.update(sID, fName, lName, eMail);
+		ListStudents(request, response);
 		
 
 	}
